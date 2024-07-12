@@ -1,4 +1,4 @@
-package mandarin.configs;
+package ru.kata.spring.boot_security.demo.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import mandarin.service.CustomUserDetailService;
+import ru.kata.spring.boot_security.demo.service.CustomUserDetailService;
 
 @Configuration
 @EnableWebSecurity
