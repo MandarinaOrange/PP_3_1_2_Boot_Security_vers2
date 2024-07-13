@@ -12,11 +12,11 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class AdminRESRController {
+public class AdminRESTController {
     private final UserService userService;
     private final RoleService roleService;
 
-    public AdminRESRController(UserService userService, RoleService roleService) {
+    public AdminRESTController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
