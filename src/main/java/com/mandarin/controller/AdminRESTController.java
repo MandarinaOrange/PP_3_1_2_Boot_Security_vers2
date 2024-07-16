@@ -1,5 +1,6 @@
 package com.mandarin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class AdminRESTController {
     private final UserService userService;
     private final RoleService roleService;
 
+    @Autowired
     public AdminRESTController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
