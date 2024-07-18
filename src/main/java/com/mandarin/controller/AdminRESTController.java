@@ -1,12 +1,12 @@
 package com.mandarin.controller;
 
+import com.mandarin.entity.User;
+import com.mandarin.service.RoleService;
+import com.mandarin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.mandarin.model.User;
-import com.mandarin.service.RoleService;
-import com.mandarin.service.UserService;
 
 import java.util.List;
 

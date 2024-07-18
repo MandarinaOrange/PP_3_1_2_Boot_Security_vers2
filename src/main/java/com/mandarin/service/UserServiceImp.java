@@ -1,23 +1,23 @@
 package com.mandarin.service;
 
-import com.mandarin.model.User;
+
+import com.mandarin.dao.UserRepository;
+import com.mandarin.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.mandarin.dao.UserRepository;
 
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService {
-
+public class UserServiceImp implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+        this.userRepository =  userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -51,4 +51,5 @@ public class UserServiceImp implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
 }

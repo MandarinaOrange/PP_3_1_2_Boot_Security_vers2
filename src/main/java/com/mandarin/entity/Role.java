@@ -1,4 +1,4 @@
-package com.mandarin.model;
+package com.mandarin.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -10,22 +10,26 @@ import javax.persistence.*;
 public class Role implements GrantedAuthority {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "roles")
     private String roles;
 
-    public Role(String roles) {this.roles = roles;}
+    public Role(String roles) {
+        this.roles = roles;
+    }
 
-    public Role() {};
+    public Role() {
 
-    public Long getId() {
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -41,5 +45,4 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return getRoles();
     }
-
 }

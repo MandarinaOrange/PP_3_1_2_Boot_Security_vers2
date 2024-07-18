@@ -1,9 +1,7 @@
-package com.mandarin.model;
-
+package com.mandarin.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -11,11 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 @Entity
-@Table(name = "users")
+@Table (name = "users")
+@NamedEntityGraph (name = "User.roles", attributeNodes = @NamedAttributeNode("roles"))
 public class User implements UserDetails {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +20,11 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "username")
-    @Size(min = 3, message = "не менее 3 символов")
+    @Size(min = 2, message = "Не мешьне 2 символов")
     private String username;
 
     @Column(name = "password")
-    @Size(min = 3, message = "не менее 3 символов")
+    @Size(min = 3, message = "Не мешьне 3 символов")
     private String password;
 
     @Column(name = "age")
@@ -40,9 +37,11 @@ public class User implements UserDetails {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles = new ArrayList<>();
+    private List<Role> roles = new ArrayList<Role>();
 
-    public User() {};
+
+    public User() {
+    }
 
     public User(String username, String password, byte age, String email, List<Role> roles) {
         this.username = username;
@@ -52,7 +51,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -61,20 +59,8 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-
-
     public void setUsername(String username) {
         this.username = username;
-    }
-
-
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
@@ -106,6 +92,21 @@ public class User implements UserDetails {
     }
 
     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -124,9 +125,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
-    }
-
 }

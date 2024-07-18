@@ -1,6 +1,7 @@
 package com.mandarin.service;
 
-import com.mandarin.model.Role;
+
+import com.mandarin.entity.Role;
 
 import java.util.List;
 

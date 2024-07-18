@@ -1,8 +1,7 @@
 package com.mandarin.dao;
 
-import com.mandarin.model.Role;
+import com.mandarin.entity.Role;
 import org.springframework.stereotype.Repository;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,7 +19,7 @@ public class RoleRepositoryImp implements RoleRepository {
     }
 
     @Override
-    public List<Role> findByRoles(List<Long> id) {
+    public List<Role> findByIdRoles(List<Long> id) {
         return entityManager.createQuery("select a from Role a where a.id in :id", Role.class)
                 .setParameter("id", id).getResultList();
     }

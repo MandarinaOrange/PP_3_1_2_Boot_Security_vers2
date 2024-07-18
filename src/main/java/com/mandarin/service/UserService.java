@@ -1,6 +1,7 @@
 package com.mandarin.service;
 
-import com.mandarin.model.User;
+
+import com.mandarin.entity.User;
 
 import java.util.List;
 

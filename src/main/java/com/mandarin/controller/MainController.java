@@ -1,5 +1,8 @@
 package com.mandarin.controller;
 
+import com.mandarin.entity.User;
+import com.mandarin.service.RoleService;
+import com.mandarin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.mandarin.model.User;
-import com.mandarin.service.RoleService;
-import com.mandarin.service.UserService;
 
 import java.util.ArrayList;
 
