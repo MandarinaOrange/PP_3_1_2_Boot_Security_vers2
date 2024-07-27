@@ -17,11 +17,19 @@ import java.util.ArrayList;
 public class MainController {
     private final UserService userService;
     private final RoleService roleService;
+    //private final int help;
 
     @Autowired
     public MainController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
+        /*try {
+            help = userService.addInitAdmin();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
     }
 
     @GetMapping("/api")

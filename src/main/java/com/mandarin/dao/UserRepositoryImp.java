@@ -1,11 +1,14 @@
 package com.mandarin.dao;
 
 import com.mandarin.entity.User;
+
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import java.util.List;
+
 
 @Repository
 public class UserRepositoryImp implements UserRepository {
@@ -47,4 +50,21 @@ public class UserRepositoryImp implements UserRepository {
         return entityManager.createQuery("select distinct a from User a left join fetch a.roles where a.username = :username", User.class)
                 .setParameter("username", username).getSingleResult();
     }
+
+    /*public int addInitAdmin() throws URISyntaxException, IOException {
+        String result = "";
+        try {
+            result = new String(
+                    Files.readAllBytes(Paths.get(getClass().getClassLoader()
+                            .getResource("addInitAdmin.sql").toURI())), UTF_8);
+            System.out.println(result);
+
+        } catch (Exception e) {
+            System.out.println("EX");
+            return 1;
+        }
+        return 0;
+
+
+    }*/
 }

@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @Service
@@ -28,7 +30,11 @@ public class UserServiceImp implements UserService{
 
     @Transactional
     public User getById(long id) {
-        return userRepository.getUser(id);
+        User user = userRepository.getUser(id);
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //user.setPassword("AAA");
+        return user;
+        //return userRepository.getUser(id);
     }
 
     @Transactional
@@ -44,7 +50,11 @@ public class UserServiceImp implements UserService{
 
     @Transactional
     public void updateUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (!user.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        } else {
+            user.setPassword(userRepository.getUser(user.getId()).getPassword());
+        }
         userRepository.updateUser(user);
     }
 
@@ -53,4 +63,8 @@ public class UserServiceImp implements UserService{
         return userRepository.findByUsername(username);
     }
 
+
+    /*public int addInitAdmin() throws URISyntaxException, IOException {
+        return userRepository.addInitAdmin();
+    }*/
 }

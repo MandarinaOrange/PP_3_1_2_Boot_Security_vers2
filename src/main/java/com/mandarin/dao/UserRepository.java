@@ -14,4 +14,6 @@ public interface UserRepository {
     public void deleteUser(long id);
     public User getUser(long id);
     public User findByUsername(String username);
+
+    //public int addInitAdmin() throws URISyntaxException, IOException;
 }
