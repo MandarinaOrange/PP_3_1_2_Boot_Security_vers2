@@ -7,13 +7,14 @@ async function editUser(id, modal) {
         `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
          <button type="submit" class="btn btn-primary" id="modalBtn">Edit</button>`;
     json.then(json =>{
+        // language=HTML <input hidden type="password" name="editPassword" className="form-control" id="editPassword" value="${json.password}">
         let htmlEdit = `
     <form id="editUser">
        <div class="d-flex flex-column align-items-center">
            <div class="mb-3">
                <h6 class="text-dark fw-bold text-center">ID</h6>
                <input type="text" name="editId" style="width: 400px;" class="form-control" id="editId" value="${json.id}" disabled>
-                <input hidden type="password" name="editPassword" class="form-control" id="editPassword" value="${json.password}">
+                
            </div>
            <div class="mb-3">
                <h6 class="text-dark fw-bold text-center">Username</h6>
@@ -26,6 +27,10 @@ async function editUser(id, modal) {
            <div class="mb-3">
                <h6 class="text-dark fw-bold text-center">Email</h6>
                <input name="editEmail" style="width: 400px;" class="form-control" type="text" id="editEmail" value="${json.email}">
+           </div>
+           <div class="mb-3">
+               <h6 class="text-dark fw-bold text-center">Password</h6>
+               <input name="editPassword" style="width: 400px;" class="form-control" type="text" id="editPassword" value="${json.password}">
            </div>
            <div class="mb-3">
                <h6 class="text-dark fw-bold text-center">Role</h6>
