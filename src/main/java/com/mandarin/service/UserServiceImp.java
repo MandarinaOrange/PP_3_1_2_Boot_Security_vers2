@@ -50,6 +50,8 @@ public class UserServiceImp implements UserService{
 
     @Transactional
     public void updateUser(User user) {
+
+
         if (!user.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         } else {

@@ -45,8 +45,12 @@ public class AdminController {
 
 
     @PatchMapping("/edit/{id}")
-    public String edit(@ModelAttribute("newUser") User user, @RequestParam("listRoles") ArrayList<Long> roles, @PathVariable("id") long id) {
-        user.setRoles(roleService.findByIdRoles(roles));
+    public String edit(@ModelAttribute("newUser") User user, @RequestParam(value = "listRoles", required = false) ArrayList<Long> roles, @PathVariable("id") long id) {
+        if (roles != null) {
+            user.setRoles(roleService.findByIdRoles(roles));
+        } else {
+            user.setRoles(userService.getById(id).getRoles());
+        }
         userService.updateUser(user);
         return "redirect:/admin";
     }
