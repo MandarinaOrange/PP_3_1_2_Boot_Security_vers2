@@ -34,9 +34,9 @@ async function editUser(id, modal) {
            </div>
            <div class="mb-3">
                <h6 class="text-dark fw-bold text-center">Role</h6>
-               <select style="width: 400px;" id="editRole" class="form-select" multiple  id="editRole" required="required">
+               <select style="width: 400px;" id="editRole" class="form-select" multiple required="required">
                    <option value="ADMIN">ADMIN</option>
-                   <option selected="selected" value="USER">USER</option>
+                   <option value="USER">USER</option>
                </select>
            </div>
        </div>
